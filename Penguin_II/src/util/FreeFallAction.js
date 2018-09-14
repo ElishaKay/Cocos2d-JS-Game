@@ -1,7 +1,7 @@
 /**
  * Created by yicha on 14-7-10.
  */
-// 自定义自由落体的Action
+// Custom Free Fall Action
 var FreeFallAction = cc.ActionInterval.extend( {
     timeElasped:0,
     m_positionDeltaY:null,
@@ -14,11 +14,11 @@ var FreeFallAction = cc.ActionInterval.extend( {
         cc.ActionInterval.prototype.ctor.call(this);
         this.yOffsetElasped = 0;
         this.timeElasped = 0;
-        this.m_positionDeltaY = 0;  // 垂直偏移量
-        this.m_startPosition = cc.p(0, 0);  // 起点坐标
-        this.m_targetPosition = cc.p(0, 0); // 终点坐标
+        this.m_positionDeltaY = 0;  // Vertical offset
+        this.m_startPosition = cc.p(0, 0);  // Starting point coordinates
+        this.m_targetPosition = cc.p(0, 0); // End point coordinates
     },
-    // 设置该Action运行的时间
+    // Set the time the action runs
     initWithDuration:function (duration) {
         if (cc.ActionInterval.prototype.initWithDuration.call(this, duration)) {
             return true;
@@ -32,7 +32,7 @@ var FreeFallAction = cc.ActionInterval.extend( {
             this.m_positionDeltaY = deltaPosition;
             return true;
         }
-        //cc.log("dropTime =" + dropTime + "; deltaPosition=" + deltaPosition);
+        cc.log("dropTime =" + dropTime + "; deltaPosition=" + deltaPosition);
         return false;
     },
 
@@ -43,9 +43,12 @@ var FreeFallAction = cc.ActionInterval.extend( {
         return false;
     },
 
-    // Node的runAction函数会调用ActionManager的addAction函数，在ActionManager的addAction函数中会调用Action的startWithTarget，然后在Action类的startWithTarget函数中设置_target的值。
+    // Node's runAction function will call the ActionManager's addAction 
+    // function. In the ActionManager's addAction function, 
+    // the Action's startWithTarget will be called, and then the _target 
+    // value will be set in the action class's startWithTarget function.
     startWithTarget:function(target) {
-        //cc.log("startWithTarget target=" + target);
+        cc.log("startWithTarget target=" + target);
         this._target = target;
         cc.ActionInterval.prototype.startWithTarget.call(this, target);
         this.m_startPosition = target.getPosition();

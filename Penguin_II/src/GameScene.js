@@ -15,11 +15,11 @@ var GameLayer = cc.Layer.extend({
         var size = cc.director.getWinSize();
         this.size_height = size.height;
         this.size_width = size.width;
-        // 背景 - background
+        // background
         this.backgroundLayer = new BackgroundLayer();
         this.backgroundLayer.tag = 100;
         this.backgroundLayer.init();
-        // 熊 - Bear
+        // Bear
         this.bearSprite = new BearSprite();
         this.bearSprite.init();
         this.bearSprite.setPosition(this.size_width - 70, 105);
@@ -27,7 +27,7 @@ var GameLayer = cc.Layer.extend({
         this.backgroundLayer.addChild(this.bearSprite, 1);
         this.backgroundLayer.bg_array.push(this.bearSprite);
         this.addChild(this.backgroundLayer, 0);
-        // 企鹅 - Penguin
+        //  Penguin
         this.penguinSprite = new PenguinSprite();
         this.penguinSprite.init(res.penguin_jump_2);
         this.penguinSprite.setPosition(this.size_width - 58, this.size_height - 45);
@@ -35,11 +35,11 @@ var GameLayer = cc.Layer.extend({
         var penguinLayer = cc.Layer.create();
         penguinLayer.tag = 300;
         penguinLayer.addChild(this.penguinSprite, 0);
-        // 力量大小(进度条) - Power size (progress bar)
+        // Power size (progress bar)
         this.pressTimer = cc.ProgressTimer.create(cc.Sprite.create(res.button_bottom_pressed_2));
         this.pressTimer.setType(cc.ProgressTimer.TYPE_BAR);
-        this.pressTimer.setBarChangeRate(cc.p(0, 1));  // 垂直进度条 - Vertical progress bar
-        this.pressTimer.setMidpoint(cc.p(1, 0)); // 从下向上 - Improvement
+        this.pressTimer.setBarChangeRate(cc.p(0, 1));  //  Vertical progress bar
+        this.pressTimer.setMidpoint(cc.p(1, 0)); // Improvement
         this.pressTimer.setAnchorPoint(0, 0);
         this.pressTimer.setPosition(cc.p(10, 25));
         this.pressTimer.runAction(cc.RepeatForever.create(cc.ProgressTo.create(3, 100)));    // Reach 100% in 5 seconds, ie 20% per second
@@ -57,7 +57,7 @@ var GameLayer = cc.Layer.extend({
         TOUCH_COUNT = 0;
         this.getChildByTag(300).getChildByTag(3002).stopAllActions();
         cc.eventManager.removeAllListeners();
-        // 游戏结束后显示菜单 - Show menu after game is over
+        // Show menu after game is over
         score = score || 0;
         if(score > 0) {
 //            dp_submitScore(0,score);

@@ -17,20 +17,20 @@ var PenguinSprite = cc.Sprite.extend({
     milestone_number: null,
     ctor : function() {
         this._super();
-        this.landing_Y = 75;    // 地面高度
-        this.p_reference = cc.p(450, 130);   // 击打处参考点
-        this.h_friction = 50;    // 水平减速系数
-        this.v_friction = 50;    // 垂直减速系数
-        this.rate_X = 0;    // 企鹅水平速度
-        this.rate_Y = 0;    // 企鹅垂直速度
-        this.time_interval = 0.1;   //  企鹅飞时刷新时间间隔
+        this.landing_Y = 75;    // Ground height
+        this.p_reference = cc.p(450, 130);   // Hit point reference point
+        this.h_friction = 50;    // Horizontal deceleration coefficient
+        this.v_friction = 50;    // Vertical deceleration coefficient
+        this.rate_X = 0;    // Penguin horizontal speed
+        this.rate_Y = 0;    // Penguin vertical speed
+        this.time_interval = 0.1;   //  Penguin fly time refresh interval
         this.milestone_number = 1;
     },
     init : function(res_imag) {
         this.initWithFile(res_imag);
     },
     re_stand: function() {
-        // 企鹅重新上台
+        // Penguins come back to power
         this.milestone_number = 1;
         this.setRotation(0);
         var animation = cc.Animation.create();
@@ -43,29 +43,30 @@ var PenguinSprite = cc.Sprite.extend({
         animation.addSpriteFrameWithFile(res.penguin_idle);
         animation.addSpriteFrameWithFile(res.penguin_jump_1);
         animation.addSpriteFrameWithFile(res.penguin_jump_2);
-        animation.setDelayPerUnit(0.1); // 每隔0.1秒播放一帧
+        animation.setDelayPerUnit(0.1); // Play one frame every 0.1 seconds
         var animate = cc.Animate.create(animation);
         this.runAction(animate);
     },
     playFreeFall : function() {
         this.stopAllActions();
-        // 企鹅下落时准备动画
+        // Prepare the animation when the penguin falls
         var animation = cc.Animation.create();
         animation.addSpriteFrameWithFile(res.penguin_jump_3);
         animation.addSpriteFrameWithFile(res.penguin_jump_4);
         animation.addSpriteFrameWithFile(res.penguin_jump_5);
         animation.addSpriteFrameWithFile(res.penguin_jump_6);
-        animation.setDelayPerUnit(0.1); // 每隔0.1秒播放一帧
+        animation.setDelayPerUnit(0.1); // Play one frame every 0.1 seconds
         var animate = cc.Animate.create(animation);
-        // 自由落体动画
+        // Free fall animation
         var freeFallAction = FreeFallAction.create(this.getPositionY() - 75);
-        // 合并动画序列
+        // Merge animation sequence
         this.runAction(cc.Sequence.create([animate, freeFallAction]));
     },
     flyAfterStrike : function(rate) {
         this.fly_animate();
         this.current_X = this.start_X = this.start_point_X = this.getPositionX();   // X轴坐标
         this.current_Y = this.start_Y = this.getPositionY();   // Y轴坐标
+        cc.log('X-Axis:',this.current_X,' Y-Axis:',this.current_Y );
         this.divide_rate(rate * 20);    // 设置速度放大倍数
         this.schedule(this.on_tick, this.time_interval);
     },

@@ -1,17 +1,17 @@
 /**
  * Created by yicha on 14-7-10.
  */
-var TOUCH_COUNT = 0;    // 点击次数
+var TOUCH_COUNT = 0;    // The number of clicks
 var TouchEventListener = cc.EventListener.create({
     event: cc.EventListener.TOUCH_ONE_BY_ONE,
-    swallowTouches: false,                       // 设置是否吞没事件，在 onTouchBegan 方法返回 true 时吞没
-    onTouchBegan: function (touch, event) {     //实现 onTouchBegan 事件回调函数
+    swallowTouches: false,                       // Set whether to engulf events, engulf when the onTouchBegan method returns true
+    onTouchBegan: function (touch, event) {     // Implement the onTouchBegan event callback function
         return true;
     },
-    onTouchEnded: function (touch, event) {         // 点击事件结束处理
+    onTouchEnded: function (touch, event) {         // Click event end processing
         TOUCH_COUNT++;
         var target = event.getCurrentTarget();
-        // 第一次点击，进度条停止刷新，企鹅自由落体；第二次点击，熊挥杆
+        // The first click, the progress bar stops refreshing, the penguin falls freely; the second click, the bear swing
         if(TOUCH_COUNT == 1) {
             var penguinLayer = target.getChildByTag(300);
             var penguinSprite = penguinLayer.getChildByTag(3001);
