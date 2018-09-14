@@ -1,16 +1,50 @@
 #Cocos2d-JS-Game
 
-Cocos2d-JS游戏引擎开发的HTML5小游戏(PS：这几款游戏都不是原创的，是原有游戏的JS版本)
+HTML5 game developed by Cocos2d-JS game engine (PS: These games are not original, it is the JS version of the original game)
 
 ## Penguin_II
-**游戏描述：**企鹅落下时，北极熊挥舞棒球杆击打企鹅，如果打中的话，企鹅会按照一定的运动规律飞出，
-最后会由于阻力的原因在雪地上停下来，注意左边的进度条显示的是北极熊的击打力度，决定了企鹅飞出时的速度。
-## JumpingGo
-**游戏描述：**这是一款虐心的小游戏，考验的是玩家左右脑和手的协调程度和反应速度，提醒一点左右两边的小方块很可能需要同时跳起，要注意了哦!
-## WaterDropAttack
-**游戏描述：**水滴一共有四种状态，状态的变化是通过融合其它水滴来改变的，但是到状态四再融合其它小水滴的话就会发生爆炸，爆炸后的小水滴再和其它水滴融合，改变其状态，游戏的要求就是在有限的水滴数目内，消除全部的水滴。
-## FindYourSister
-**游戏描述：**经典手游《找你妹》的JS版本，玩法和App版的一样，即找到符合任务要求的东西。
-## HappyEliminate
-**游戏描述：**这是一款三消类游戏，是《开心消消乐》的JS版本，已经完成了三消游戏的主要逻辑，并且实现了直线消除的特效。
+Game description: When the penguin falls, the polar bear swings the baseball bat to hit the penguin. If it hits, the penguin will fly according to a certain movement law.
 
+Finally, it will stop on the snow due to the resistance. Note that the progress bar on the left shows the strength of the polar bear's striking, which determines the speed at which the penguin flies out.
+
+## JumpingGo
+Game Description: This is a child-friendly game. It tests the coordination degree and reaction speed of the player's left and right brains and hands. It reminds me that the small squares on the left and right sides may need to jump at the same time. Pay attention to it. !
+
+## WaterDropAttack
+Game description: Water drops have four states. The change of state is changed by merging other water droplets. However, if the state four is merged with other small water droplets, it will explode. After the explosion, the water droplets and other water droplets will explode. Fusion, changing its state, the game's requirement is to eliminate all water droplets within a limited number of water droplets!
+
+## FindYourSister
+Game description: JS version of the classic mobile game "Looking for your sister", the gameplay is the same as the App version, that is, find something that meets the task requirements.
+
+## HappyEliminate
+Game description: This is a three-disc game, the JS version of "Happy Fun", which has completed the main logic of the three-game, and achieved the effect of straight-line elimination.
+
+How To Run on Local Machine:
+
+Step 1:
+
+Watched the first 4 minutes of this video - how to download Cocos for Linux:
+
+Building Cocos2d-x 3.7 in Ubuntu
+
+https://www.youtube.com/watch?v=gwDdUspNMvg&list=LLJ39jPaNwEeqQbDCDNZJNBA&index=4&t=92s
+
+Step 2:
+
+You can choose where to extract your zipped Cocos Folder. Create a 'projects' folder within the Cocos package. Then, paste the 5 games in this repo into your 'projects' folder.
+
+Step 3:
+
+Within your Command Line, cd into the folder of each game, and run:
+
+```
+cocos run -p web
+```
+
+Shablam, the browser will automatically open up the game within your Web Browser! Note: the games work on web for me because I have a touch-screen laptop. To run these games on Android, you will need the NDK.
+
+More on that here: 
+
+https://developer.android.com/ndk/downloads/
+
+You will also need to specify for Cocos where your NDK is located.
